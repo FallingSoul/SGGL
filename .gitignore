@@ -1,3 +1,6 @@
+# gitignore
+!.gitignore
+
 # Visual Studio Code
 /build/
 /.vscode/
