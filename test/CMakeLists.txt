@@ -1,0 +1,1 @@
+add_executable(Test ${SGGL_HEADERS} ./main.cpp)

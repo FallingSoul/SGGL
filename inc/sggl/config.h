@@ -16,10 +16,12 @@
 
 
 
+
+#define SG_GL_API_ATTR
 #define SG_GL_API
-#define SG_GL_APIENTRY
 
 // for debugging
 #define SG_GL_DEBUG 1
+
 
 #endif //!__SG_GL_CONFIG__
