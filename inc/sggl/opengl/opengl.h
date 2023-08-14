@@ -2,6 +2,7 @@
 #define __SG_GL_OPENGL__
 
 
+#include "sggl/family.h"
 
 
 
