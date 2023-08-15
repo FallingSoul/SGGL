@@ -13,7 +13,7 @@
 请到这里下载
 - [msys2镜像](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/)
 
-请根据自己的系统进入1686/x86_64目录。然后选择 msys2-base-i686/x86_64-最新版本时间.sfx.exe
+请根据自己的系统进入i686/x86_64目录。然后选择 msys2-base-i686/x86_64-最新版本时间.sfx.exe
 
 其中i686和x86_64取决于您使用32位还是64位的电脑
 
