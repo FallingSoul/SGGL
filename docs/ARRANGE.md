@@ -102,3 +102,55 @@ pacman -S mingw64/mingw-w64-x86_64-glew 最新版本号
 这是最后一步，我们需要用cmake构建项目
 
 如果您是windows7用户，那么我们推荐您使用这个链接下载
+- [cmake官网](https://cmake.org/download/)
+
+请根据您的系统选择
+
+下载好后，因为winlibs再带cmake，所以您需要把文件夹直接拖过去，和winlibs里的cmake合并来使用
+
+如果您是windows10用户，那么您可以直接运行
+``` shell
+pacman -Ss cmake
+```
+应该会出现以下结果
+``` shell
+mingw32/mingw-w64-i686-cmake 最新版本号
+    A cross-platform open-source make system (mingw-w64)
+mingw32/mingw-w64-i686-cmake-doc-qt 最新版本号
+    CMake documentation in Qt Help format
+mingw32/mingw-w64-i686-cmake-docs 最新版本号
+    A cross-platform open-source make system (mingw-w64) (documentation)
+mingw32/mingw-w64-i686-cmakerc 最新版本号
+    A Standalone CMake-Based C++ Resource Compiler (mingw-w64)
+mingw32/mingw-w64-i686-cninja 最新版本号
+    cninja, an opinionated cmake config manager
+mingw32/mingw-w64-i686-extra-cmake-modules 最新版本号 (mingw-w64-i686-kf5)
+    Extra CMake modules (mingw-w64)
+mingw32/mingw-w64-i686-python-sphinxcontrib-moderncmakedomain 最新版本号
+    Sphinx Domain for Modern CMake (mingw-w64)
+mingw64/mingw-w64-x86_64-cmake 最新版本号
+    A cross-platform open-source make system (mingw-w64)
+mingw64/mingw-w64-x86_64-cmake-doc-qt 最新版本号
+    CMake documentation in Qt Help format
+mingw64/mingw-w64-x86_64-cmake-docs 最新版本号
+    A cross-platform open-source make system (mingw-w64) (documentation)
+mingw64/mingw-w64-x86_64-cmakerc 最新版本号
+    A Standalone CMake-Based C++ Resource Compiler (mingw-w64)
+mingw64/mingw-w64-x86_64-cninja 最新版本号
+    cninja, an opinionated cmake config manager
+mingw64/mingw-w64-x86_64-extra-cmake-modules 最新版本号 (mingw-w64-x86_64-kf5)
+    Extra CMake modules (mingw-w64)
+mingw64/mingw-w64-x86_64-python-sphinxcontrib-moderncmakedomain 最新版本号
+    Sphinx Domain for Modern CMake (mingw-w64)
+```
+若您是32位，请输入
+```shell
+pacman -S mingw32/mingw-w64-i686-cmake 最新版本号
+```
+若您是64位，请输入
+```shell
+pacman -S mingw-w64-x86_64-cmake 最新版本号
+```
+如果中间有停顿，按enter就好。其中最新版本号请自行替换。
+
+感谢您可以看到这里，部署已成功，希望sggl可以和您长久陪伴。
