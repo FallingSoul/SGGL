@@ -44,6 +44,9 @@ namespace sggl
     typedef void * sgptr;
     typedef decltype(nullptr) sgnullptr;
 
+    typedef char sgbyte;
+    typedef unsigned char sgubyte;
+
 #ifdef SG_GL_HOST_WIN64
     typedef sgint64 sgintptr;
     typedef sguint64 sguintptr;

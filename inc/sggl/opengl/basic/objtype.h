@@ -15,7 +15,10 @@ namespace sggl
             {
                 Unknown,
                 VertexArray,
-                Buffer
+                Buffer,
+                Shader,
+                Program,
+                Texture
             };
         }
     }
