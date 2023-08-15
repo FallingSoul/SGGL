@@ -130,6 +130,10 @@ int main()
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+    vao.~sgVertexArray();
+    vbo.~sgBuffer();
+    program.~sgProgram();
+
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
