@@ -59,7 +59,7 @@
 #endif
 
 #if defined(BSD)
-#define SG_GL_HOST_BSD
+#define SG_GL_HOST_BSD 1
 
 #if defined(__DragonFly__)
 #define SG_GL_HOST_BSD_DRONGFLY 1
