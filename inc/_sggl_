@@ -1,0 +1,6 @@
+#ifndef ___SG_GL___
+#define ___SG_GL___
+
+#include "sggl/sggl.h"
+
+#endif //!___SG_GL___
