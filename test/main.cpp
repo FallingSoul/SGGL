@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-#define SG_GL_OPENGL_USE_GLEW
+//#define SG_GL_OPENGL_USE_GLEW
 #include "sggl/sggl.h"
 #include "sggl/opengl/opengl.h"
 #include "sggl/glfw/glfw.h"
