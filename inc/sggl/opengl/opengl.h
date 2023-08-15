@@ -4,6 +4,8 @@
 
 #include "sggl/family.h"
 #include "sggl/opengl/incogl.h"
+#include "sggl/opengl/object.h"
+#include "sggl/opengl/vertex_array.h"
 
 
 
