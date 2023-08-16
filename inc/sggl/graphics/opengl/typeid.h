@@ -1,10 +1,10 @@
-#ifndef __SG_GL_OPENGL_BASIC_TYPEID__
-#define __SG_GL_OPENGL_BASIC_TYPEID__
+#ifndef __SG_GL_GRAPHICS_OPENGL_TYPEID__
+#define __SG_GL_GRAPHICS_OPENGL_TYPEID__
 
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
+#include "sggl/graphics/opengl/incogl.h"
 
 
 
@@ -12,8 +12,6 @@ namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             template<class Type>
             struct sgType2Typeid;
 
@@ -35,8 +33,8 @@ namespace sggl
             struct sgType2Typeid<sgfloat>{static constexpr sguint type = GL_FLOAT;};
             template<>
             struct sgType2Typeid<sgdouble>{static constexpr sguint type = GL_DOUBLE;};
-        }
+
     }
 }
 
-#endif //!__SG_GL_OPENGL_BASIC_TYPEID__
+#endif //!__SG_GL_GRAPHICS_OPENGL_TYPEID__

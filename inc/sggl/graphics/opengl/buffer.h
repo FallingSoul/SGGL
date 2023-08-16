@@ -1,21 +1,18 @@
-#ifndef __SG_GL_OPENGL_BASIC_BUFFER__
-#define __SG_GL_OPENGL_BASIC_BUFFER__
+#ifndef __SG_GL_GRAPHICS_OPENGL_BUFFER__
+#define __SG_GL_GRAPHICS_OPENGL_BUFFER__
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
-#include "sggl/opengl/basic/object.h"
-#include "sggl/opengl/basic/buftype.h"
-#include "sggl/opengl/basic/usagetype.h"
+#include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/object.h"
+#include "sggl/graphics/opengl/buftype.h"
+#include "sggl/graphics/opengl/usagetype.h"
 
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
-
             class sgBuffer : public sgObject<sgObjectType::Buffer>
             {
             public:
@@ -67,8 +64,7 @@ namespace sggl
                 }
 
             };
-        }
     }
 }
 
-#endif //!__SG_GL_OPENGL_BASIC_BUFFER__
+#endif //!__SG_GL_GRAPHICS_OPENGL_BUFFER__

@@ -1,18 +1,16 @@
-#ifndef __SG_GL_OPENGL_BASIC_SHADER__
-#define __SG_GL_OPENGL_BASIC_SHADER__
+#ifndef __SG_GL_GRAPHICS_OPENGL_SHADER__
+#define __SG_GL_GRAPHICS_OPENGL_SHADER__
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
-#include "sggl/opengl/basic/object.h"
-#include "sggl/opengl/basic/shader_type.h"
+#include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/object.h"
+#include "sggl/graphics/opengl/shader_type.h"
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             class sgShader : public sgObject<sgObjectType::Shader>
             {
             public:
@@ -67,9 +65,8 @@ namespace sggl
             public:
                 friend class sgProgram;
             };
-        }
     }
 }
 
 
-#endif //!__SG_GL_OPENGL_BASIC_SHADER__
+#endif //!__SG_GL_GRAPHICS_OPENGL_SHADER__

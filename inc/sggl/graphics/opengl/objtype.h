@@ -1,5 +1,5 @@
-#ifndef __SG_GL_OPENGL_BASIC_OBJTYPE__
-#define __SG_GL_OPENGL_BASIC_OBJTYPE__
+#ifndef __SG_GL_GRAPHICS_OPENGL_OBJTYPE__
+#define __SG_GL_GRAPHICS_OPENGL_OBJTYPE__
 
 
 #include "sggl/family.h"
@@ -8,21 +8,18 @@ namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
-
             enum class sgObjectType
             {
                 Unknown,
+                Memory,
                 VertexArray,
                 Buffer,
                 Shader,
                 Program,
                 Texture
             };
-        }
     }
 }
 
 
-#endif //!__SG_GL_OPENGL_BASIC_OBJTYPE__
+#endif //!__SG_GL_GRAPHICS_OPENGL_OBJTYPE__

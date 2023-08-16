@@ -1,17 +1,15 @@
-#ifndef __SG_GL_OPENGL_BASIC_OBJECT__
-#define __SG_GL_OPENGL_BASIC_OBJECT__
+#ifndef __SG_GL_GRAPHICS_OPENGL_OBJECT__
+#define __SG_GL_GRAPHICS_OPENGL_OBJECT__
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
-#include "sggl/opengl/basic/objtype.h"
+#include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/objtype.h"
 
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             template<sgObjectType Type>
             class sgObject;
 
@@ -93,10 +91,9 @@ namespace sggl
             private:
                 sgObjectID _obj;
             };
-        }
     }
 }
 
 
 
-#endif //!__SG_GL_OPENGL_BASIC_OBJECT__
+#endif //!__SG_GL_GRAPHICS_OPENGL_OBJECT__

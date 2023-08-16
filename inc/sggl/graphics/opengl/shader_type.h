@@ -1,16 +1,14 @@
-#ifndef __SG_GL_OPENGL_BASIC_SHADER_TYPE__
-#define __SG_GL_OPENGL_BASIC_SHADER_TYPE__
+#ifndef __SG_GL_GRAPHICS_OPENGL_SHADER_TYPE__
+#define __SG_GL_GRAPHICS_OPENGL_SHADER_TYPE__
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
+#include "sggl/graphics/opengl/incogl.h"
 
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             enum class sgShaderType
             {
                 Vertex,
@@ -32,8 +30,7 @@ namespace sggl
             template<>
             struct sgShaderType2ShaderType<sgShaderType::Fragment>{static constexpr sguint type = GL_FRAGMENT_SHADER;};
 
-        }
     }
 }
 
-#endif //!__SG_GL_OPENGL_BASIC_SHADER_TYPE__
+#endif //!__SG_GL_GRAPHICS_OPENGL_SHADER_TYPE__

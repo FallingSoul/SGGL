@@ -1,17 +1,15 @@
-#ifndef __SG_GL_OPENGL_BASIC_USAGETYPE__
-#define __SG_GL_OPENGL_BASIC_USAGETYPE__
+#ifndef __SG_GL_GRAPHICS_OPENGL_USAGETYPE__
+#define __SG_GL_GRAPHICS_OPENGL_USAGETYPE__
 
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
+#include "sggl/graphics/opengl/incogl.h"
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             enum class sgUsageType
             {
                 StaticDraw,
@@ -46,8 +44,7 @@ namespace sggl
             struct sgUsageType2Usage<sgUsageType::DynamicRead>{static constexpr sguint usage = GL_DYNAMIC_READ;};
             template<>
             struct sgUsageType2Usage<sgUsageType::DynamicCopy>{static constexpr sguint usage = GL_DYNAMIC_COPY;};
-        }
     }
 }
 
-#endif //!__SG_GL_OPENGL_BASIC_USAGETYPE__
+#endif //!__SG_GL_GRAPHICS_OPENGL_USAGETYPE__

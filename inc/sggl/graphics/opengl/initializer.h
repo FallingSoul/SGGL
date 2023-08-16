@@ -1,15 +1,13 @@
-#ifndef __SG_GL_OPENGL_BASIC_INITIALIZER__
-#define __SG_GL_OPENGL_BASIC_INITIALIZER__
+#ifndef __SG_GL_GRAPHICS_OPENGL_INITIALIZER__
+#define __SG_GL_GRAPHICS_OPENGL_INITIALIZER__
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
+#include "sggl/graphics/opengl/incogl.h"
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             class sgOpenGLInitializer
             {
             public:
@@ -36,9 +34,8 @@ namespace sggl
                     return nullptr;
                 }
             };
-        }
     }
 }
 
 
-#endif //!__SG_GL_OPENGL_BASIC_INITIALIZER__
+#endif //!__SG_GL_GRAPHICS_OPENGL_INITIALIZER__

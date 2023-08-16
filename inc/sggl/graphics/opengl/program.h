@@ -1,19 +1,17 @@
-#ifndef __SG_GL_OPENGL_BASIC_PROGRAM__
-#define __SG_GL_OPENGL_BASIC_PROGRAM__
+#ifndef __SG_GL_GRAPHICS_OPENGL_PROGRAM__
+#define __SG_GL_GRAPHICS_OPENGL_PROGRAM__
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
-#include "sggl/opengl/basic/object.h"
-#include "sggl/opengl/basic/shader.h"
+#include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/object.h"
+#include "sggl/graphics/opengl/shader.h"
 
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
             class sgProgram : public sgObject<sgObjectType::Program>
             {
             public:
@@ -60,9 +58,8 @@ namespace sggl
                     return glGetUniformLocation(this->id(),name);
                 }
             };
-        }
     }
 }
 
 
-#endif //!__SG_GL_OPENGL_BASIC_PROGRAM__
+#endif //!__SG_GL_GRAPHICS_OPENGL_PROGRAM__

@@ -4,8 +4,8 @@
 
 //#define SG_GL_OPENGL_USE_GLEW
 #include "sggl/sggl.h"
-#include "sggl/opengl/opengl.h"
-#include "sggl/glfw/glfw.h"
+#include "sggl/graphics/opengl.h"
+#include "sggl/graphics/glfw.h"
 
 #define WINDOW_HEIGHT 720
 #define WINDOW_WIDTH 1280
@@ -66,30 +66,30 @@ int main()
     glfwSwapInterval(1);
     glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
-    if(errString = sggl::ogl::basic::sgOpenGLInitializer::initialze(true))
+    if(errString = sggl::ogl::sgOpenGLInitializer::initialze(true))
     {
         printf("cannot init opengl: %s\n",errString);
         glfwTerminate();
         return -1;
     }
 
-    sggl::ogl::basic::sgVertexArray vao;
-    sggl::ogl::basic::sgBuffer vbo;
+    sggl::ogl::sgVertexArray vao;
+    sggl::ogl::sgBuffer vbo;
     vao.bind();
-    vbo.bind<sggl::ogl::basic::sgBufferType::Array>();
-    vbo.setData<sggl::ogl::basic::sgBufferType::Array,sggl::ogl::basic::sgUsageType::StaticDraw>(&vertices[0],sizeof(vertices));
+    vbo.bind<sggl::ogl::sgBufferType::Array>();
+    vbo.setData<sggl::ogl::sgBufferType::Array,sggl::ogl::sgUsageType::StaticDraw>(&vertices[0],sizeof(vertices));
     vao.setAttr<sggl::sgfloat>(0,2,5 * sizeof(sggl::sgfloat),0);
     vao.setAttr<sggl::sgfloat>(1,3,5 * sizeof(sggl::sgfloat),2 * sizeof(sggl::sgfloat));
     vao.enable(0);
     vao.enable(1);
-    vbo.unbind<sggl::ogl::basic::sgBufferType::Array>();
+    vbo.unbind<sggl::ogl::sgBufferType::Array>();
     vao.unbind();
 
-    sggl::ogl::basic::sgProgram program;
-    sggl::ogl::basic::sgShader shader;
+    sggl::ogl::sgProgram program;
+    sggl::ogl::sgShader shader;
     sggl::sgchar loginfo[1024]{};
 
-    shader.create<sggl::ogl::basic::sgShaderType::Vertex>();
+    shader.create<sggl::ogl::sgShaderType::Vertex>();
     shader.loadSource(vertexShaderSource,0);
     shader.compile();
     if(false == shader.compiled())
@@ -100,7 +100,7 @@ int main()
     program.attach(shader);
     shader.~sgShader();
 
-    shader.create<sggl::ogl::basic::sgShaderType::Fragment>();
+    shader.create<sggl::ogl::sgShaderType::Fragment>();
     shader.loadSource(fragmentShaderSource,0);
     shader.compile();
     if(false == shader.compiled())

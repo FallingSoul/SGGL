@@ -1,19 +1,16 @@
-#ifndef __SG_GL_OPENGL_BASIC_VERTEX_ARRAY__
-#define __SG_GL_OPENGL_BASIC_VERTEX_ARRAY__
+#ifndef __SG_GL_GRAPHICS_OPENGL_VERTEX_ARRAY__
+#define __SG_GL_GRAPHICS_OPENGL_VERTEX_ARRAY__
 
 
 #include "sggl/family.h"
-#include "sggl/opengl/incogl.h"
-#include "sggl/opengl/basic/object.h"
-#include "sggl/opengl/basic/typeid.h"
+#include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/object.h"
+#include "sggl/graphics/opengl/typeid.h"
 
 namespace sggl
 {
     namespace ogl
     {
-        namespace basic
-        {
-
             class sgVertexArray : public sgObject<sgObjectType::VertexArray>
             {
             public:
@@ -50,9 +47,8 @@ namespace sggl
                     glDisableVertexAttribArray(index);
                 }
             };
-        }
     }
 }
 
 
-#endif //!__SG_GL_OPENGL_BASIC_VERTEX_ARRAY__
+#endif //!__SG_GL_GRAPHICS_OPENGL_VERTEX_ARRAY__
