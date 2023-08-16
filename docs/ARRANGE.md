@@ -27,7 +27,7 @@
 mingw64/32取决于您的系统
 
 对于windows10用户，我们推荐您使用msys2直接下载。命令为
-``` shell
+``` bash
 pacman -S --needed base-devel mingw-w64-x86_64/i686-toolchain
 pacman -Syu
 pacman -Su
@@ -39,11 +39,11 @@ pacman -Su
 
 ### 下载glfw
 
-``` shell
+``` bash
 pacman -Ss glfw
 ```
 应该会出现以下结果：
-``` shell
+``` bash
 clangarm64/mingw-w64-clang-aarch64-glfw 最新版本号
     A free, open source, portable framework for OpenGL application development (mingw-w64)
 mingw32/mingw-w64-i686-glfw 最新版本号
@@ -58,22 +58,22 @@ clang64/mingw-w64-clang-x86_64-glfw 最新版本号
     A free, open source, portable framework for OpenGL application development (mingw-w64)
 ```
 若您是32位，请输入
-```shell
+```bash
 pacman -S mingw32/mingw-w64-i686-glfw 最新版本号
 ```
 若您是64位，请输入
-```shell
+```bash
 pacman -S mingw64/mingw-w64-x86_64-glfw 最新版本号
 ```
 如果中间有停顿，按enter就好。其中最新版本号请自行替换。
 
 ### 下载glew
 
-``` shell
+``` bash
 pacman -Ss glew
 ```
 应该会出现以下结果
-``` shell
+``` bash
 clangarm64/mingw-w64-clang-aarch64-glew 最新版本号
     GLEW, The OpenGL Extension Wrangler Library (mingw-w64)
 mingw32/mingw-w64-i686-glew 最新版本号
@@ -89,17 +89,63 @@ clang64/mingw-w64-clang-x86_64-glew 最新版本号
 
 ```
 若您是32位，请输入
-```shell
+```bash
 pacman -S mingw32/mingw-w64-i686-glew 最新版本号
 ```
 若您是64位，请输入
-```shell
+```bash
 pacman -S mingw64/mingw-w64-x86_64-glew 最新版本号
 ```
 如果中间有停顿，按enter就好。其中最新版本号请自行替换。
 
 ## 下载glm
-方法同样，就不赘述了。
+
+``` bash
+pacman -Ss glm
+```
+应该会出现以下结果
+``` bash
+clangarm64/mingw-w64-clang-aarch64-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+clangarm64/mingw-w64-clang-aarch64-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+mingw32/mingw-w64-i686-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+mingw32/mingw-w64-i686-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+mingw64/mingw-w64-x86_64-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+mingw64/mingw-w64-x86_64-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+ucrt64/mingw-w64-ucrt-x86_64-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+ucrt64/mingw-w64-ucrt-x86_64-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+clang32/mingw-w64-clang-i686-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+clang32/mingw-w64-clang-i686-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+clang64/mingw-w64-clang-x86_64-cglm 最新版本号
+    OpenGL Mathematics (glm) for C (mingw-w64)
+clang64/mingw-w64-clang-x86_64-glm 最新版本号
+    C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL)
+    specification (mingw-w64)
+
+```
+若您是32位，请输入
+```bash
+pacman -S mingw32/mingw-w64-i686-glm 最新版本号
+```
+若您是64位，请输入
+```bash
+pacman -S mingw64/mingw-w64-x86_64-glm 最新版本号
+```
+如果中间有停顿，按enter就好。其中最新版本号请自行替换。
 
 ## cmake下载
 这是最后一步，我们需要用cmake构建项目
@@ -112,11 +158,11 @@ pacman -S mingw64/mingw-w64-x86_64-glew 最新版本号
 下载好后，因为winlibs再带cmake，所以您需要把文件夹直接拖过去，和winlibs里的cmake合并来使用
 
 如果您是windows10用户，那么您可以直接运行
-``` shell
+``` bash
 pacman -Ss cmake
 ```
 应该会出现以下结果
-``` shell
+``` bash
 mingw32/mingw-w64-i686-cmake 最新版本号
     A cross-platform open-source make system (mingw-w64)
 mingw32/mingw-w64-i686-cmake-doc-qt 最新版本号
@@ -147,11 +193,11 @@ mingw64/mingw-w64-x86_64-python-sphinxcontrib-moderncmakedomain 最新版本号
     Sphinx Domain for Modern CMake (mingw-w64)
 ```
 若您是32位，请输入
-```shell
+```bash
 pacman -S mingw32/mingw-w64-i686-cmake 最新版本号
 ```
 若您是64位，请输入
-```shell
+```bash
 pacman -S mingw-w64-x86_64-cmake 最新版本号
 ```
 如果中间有停顿，按enter就好。其中最新版本号请自行替换。
