@@ -42,7 +42,7 @@ const char * fragmentShaderSource =
 const char * errString = nullptr;
 
 
-int main()
+int old_main()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
@@ -136,5 +136,11 @@ int main()
 
     glfwDestroyWindow(window);
     glfwTerminate();
+    return 0;
+}
+
+int main()
+{
+    printf("Hello World!\n");
     return 0;
 }
