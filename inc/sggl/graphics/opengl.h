@@ -4,6 +4,13 @@
 
 #include "sggl/family.h"
 #include "sggl/graphics/opengl/incogl.h"
+#include "sggl/graphics/opengl/initializer.h"
+#include "sggl/graphics/opengl/object.h"
+#include "sggl/graphics/opengl/operator.h"
+#include "sggl/graphics/opengl/vertex_array.h"
+#include "sggl/graphics/opengl/buffer.h"
+#include "sggl/graphics/opengl/shader.h"
+#include "sggl/graphics/opengl/program.h"
 
 
 

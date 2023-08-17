@@ -1,7 +1,6 @@
 
 #include <stdio.h>
 
-/*
 //#define SG_GL_OPENGL_USE_GLEW
 #include "sggl/sggl.h"
 #include "sggl/graphics/opengl.h"
@@ -42,7 +41,7 @@ const char * fragmentShaderSource =
 const char * errString = nullptr;
 
 
-int old_main()
+int main()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
@@ -66,52 +65,54 @@ int old_main()
     glfwSwapInterval(1);
     glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
-    if(errString = sggl::ogl::sgOpenGLInitializer::initialze(true))
+    if(errString = sggl::graphics::opengl::sgOglInitializer::initialize(true))
     {
         printf("cannot init opengl: %s\n",errString);
         glfwTerminate();
         return -1;
     }
 
-    sggl::ogl::sgVertexArray vao;
-    sggl::ogl::sgBuffer vbo;
-    vao.bind();
-    vbo.bind<sggl::ogl::sgBufferType::Array>();
-    vbo.setData<sggl::ogl::sgBufferType::Array,sggl::ogl::sgUsageType::StaticDraw>(&vertices[0],sizeof(vertices));
-    vao.setAttr<sggl::sgfloat>(0,2,5 * sizeof(sggl::sgfloat),0);
-    vao.setAttr<sggl::sgfloat>(1,3,5 * sizeof(sggl::sgfloat),2 * sizeof(sggl::sgfloat));
-    vao.enable(0);
-    vao.enable(1);
-    vbo.unbind<sggl::ogl::sgBufferType::Array>();
-    vao.unbind();
+    sggl::graphics::opengl::sgOglVertexArray vao;
+    sggl::graphics::opengl::sgOglBuffer vbo;
+    decltype(vao)::sgOglOperator vao_op(vao);
+    decltype(vbo)::sgOglOperator<sggl::graphics::opengl::sgOglBufferType::Array> vbo_op(vbo);
+    vbo_op.buffer_data<sggl::graphics::opengl::sgOglUsage::StaticDraw>(vertices,sizeof(vertices));
+    vao_op.set_attr<sggl::sgfloat>(0,2,sizeof(sggl::sgfloat) * 5,sizeof(sggl::sgfloat) * 0);
+    vao_op.set_attr<sggl::sgfloat>(1,3,sizeof(sggl::sgfloat) * 5,sizeof(sggl::sgfloat) * 2);
+    vao_op.enable(0);
+    vao_op.enable(1);
 
-    sggl::ogl::sgProgram program;
-    sggl::ogl::sgShader shader;
-    sggl::sgchar loginfo[1024]{};
-
-    shader.create<sggl::ogl::sgShaderType::Vertex>();
-    shader.loadSource(vertexShaderSource,0);
-    shader.compile();
-    if(false == shader.compiled())
+    sggl::sgchar loginfo[1024];
+    sggl::graphics::opengl::sgOglShader<sggl::graphics::opengl::sgOglShaderType::Vertex> vshader;
+    sggl::graphics::opengl::sgOglShader<sggl::graphics::opengl::sgOglShaderType::Fragment> fshader;
+    vshader.source(vertexShaderSource,0);
+    vshader.compile();
+    if(false == vshader.compiled())
     {
-        shader.loginfo(&loginfo[0],1024);
-        printf(&loginfo[0]);
+        vshader.loginfo(&loginfo[0],sizeof(loginfo));
+        printf("cannot compile vertex shader: %s\n",&loginfo[0]);
     }
-    program.attach(shader);
-    shader.~sgShader();
-
-    shader.create<sggl::ogl::sgShaderType::Fragment>();
-    shader.loadSource(fragmentShaderSource,0);
-    shader.compile();
-    if(false == shader.compiled())
+    fshader.source(fragmentShaderSource,0);
+    fshader.compile();
+    if(false == fshader.compiled())
     {
-        shader.loginfo(&loginfo[0],1024);
-        printf(&loginfo[0]);
+        fshader.loginfo(&loginfo[0],sizeof(loginfo));
+        printf("cannot compile fragment shader: %s\n",&loginfo[0]);
     }
-    program.attach(shader);
-    shader.~sgShader();
-
+    
+    sggl::graphics::opengl::sgOglProgram program;
+    program.attach(vshader);
+    program.attach(fshader);
     program.link();
+    if(false == program.linked())
+    {
+        program.loginfo(&loginfo[0],sizeof(loginfo));
+        printf("cannot link program: %s\n",&loginfo[0]);
+    }
+
+
+
+
 
 
 
@@ -123,24 +124,18 @@ int old_main()
         glClearColor(0.0,0.0,0.0,1.0);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        vao.bind();
         program.use();
+        decltype(vao)::sgOglOperator vao_op(vao);
+
         glDrawArrays(GL_TRIANGLES,0,3);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    vao.~sgVertexArray();
-    vbo.~sgBuffer();
-    program.~sgProgram();
+
+
 
     glfwDestroyWindow(window);
     glfwTerminate();
-    return 0;
-}
-*/
-int main()
-{
-    printf("Hello World!\n");
     return 0;
 }
