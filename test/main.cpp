@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-
+/*
 //#define SG_GL_OPENGL_USE_GLEW
 #include "sggl/sggl.h"
 #include "sggl/graphics/opengl.h"
@@ -138,7 +138,7 @@ int old_main()
     glfwTerminate();
     return 0;
 }
-
+*/
 int main()
 {
     printf("Hello World!\n");
