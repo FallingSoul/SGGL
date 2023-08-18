@@ -42,6 +42,15 @@ const char * fragmentShaderSource =
         void main()
         {
             gl_FragColor = texture(tex,tex_coord);
+            if(tex_coord.x > 1.0 && tex_coord.y > 1.0)
+            {
+                vec4 color = texture(tex,vec2(1.0,1.0));
+                if(color == gl_FragColor)
+                {
+                    gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+                }
+            }
+
         }
     )"
 ;
@@ -133,7 +142,7 @@ int main()
         else printf("unsupported image format!");
         stbi_image_free(data);
         texture_op.set_filter<sggl::graphics::opengl::sgOglFilter::Linear>();
-        texture_op.set_wrap<sggl::graphics::opengl::sgOglWrap::MirrorRepeat>();
+        texture_op.set_wrap<sggl::graphics::opengl::sgOglWrap::ClampToEdge>();
         texture_op.gen_mipmap();
     }
 
