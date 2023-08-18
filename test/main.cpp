@@ -6,24 +6,30 @@
 #include "sggl/graphics/opengl.h"
 #include "sggl/graphics/glfw.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
+
 #define WINDOW_HEIGHT 720
 #define WINDOW_WIDTH 1280
 
 float vertices[] =
 {
-     0.0, 0.5,1.0,0.0,0.0,
-    -0.5,-0.5,0.0,0.0,1.0,
-     0.5,-0.5,0.0,1.0,0.0
+    -0.5, 0.5,0.0,1.0,
+    -0.5,-0.5,0.0,0.0,
+     0.5,-0.5,1.0,0.0,
+    -0.5, 0.5,0.0,1.0,
+     0.5,-0.5,1.0,0.0,
+     0.5, 0.5,1.0,1.0
 };
 const char * vertexShaderSource = 
     R"(
         #version 330 core
         layout(location = 0) in vec2 aPos;
-        layout(location = 1) in vec3 aColor;
-        out vec4 color;
+        layout(location = 1) in vec2 aTexCoord;
+        out vec2 tex_coord;
         void main()
         {
-            color = vec4(aColor,1.0);
+            tex_coord = aTexCoord * 2;
             gl_Position = vec4(aPos,0.0,1.0);
         }
     )"
@@ -31,10 +37,11 @@ const char * vertexShaderSource =
 const char * fragmentShaderSource = 
     R"(
         #version 330 core
-        in vec4 color;
+        in vec2 tex_coord;
+        uniform sampler2D tex;
         void main()
         {
-            gl_FragColor = color;
+            gl_FragColor = texture(tex,tex_coord);
         }
     )"
 ;
@@ -77,8 +84,8 @@ int main()
     decltype(vao)::sgOglOperator vao_op(vao);
     decltype(vbo)::sgOglOperator<sggl::graphics::opengl::sgOglBufferType::Array> vbo_op(vbo);
     vbo_op.buffer_data<sggl::graphics::opengl::sgOglUsage::StaticDraw>(vertices,sizeof(vertices));
-    vao_op.set_attr<sggl::sgfloat>(0,2,sizeof(sggl::sgfloat) * 5,sizeof(sggl::sgfloat) * 0);
-    vao_op.set_attr<sggl::sgfloat>(1,3,sizeof(sggl::sgfloat) * 5,sizeof(sggl::sgfloat) * 2);
+    vao_op.set_attr<sggl::sgfloat>(0,2,sizeof(sggl::sgfloat) * 4,sizeof(sggl::sgfloat) * 0);
+    vao_op.set_attr<sggl::sgfloat>(1,2,sizeof(sggl::sgfloat) * 4,sizeof(sggl::sgfloat) * 2);
     vao_op.enable(0);
     vao_op.enable(1);
 
@@ -110,6 +117,25 @@ int main()
         printf("cannot link program: %s\n",&loginfo[0]);
     }
 
+    sggl::graphics::opengl::sgOglTexture texture;
+    int width,height,channel;
+    stbi_set_flip_vertically_on_load(true);
+    stbi_uc * data = stbi_load(R"(./image.png)",&width,&height,&channel,0);
+    if(nullptr == data)
+    {
+        printf("cannot load image!\n");
+    }
+    else
+    {
+        decltype(texture)::sgOglOperator<sggl::graphics::opengl::sgOglTextureType::Texture2D> texture_op(texture);
+        if(channel == 3)texture_op.load<stbi_uc,sggl::graphics::opengl::sgOglColorType::RGB>(data,width,height);
+        else if(channel == 4)texture_op.load<stbi_uc,sggl::graphics::opengl::sgOglColorType::RGBA>(data,width,height);
+        else printf("unsupported image format!");
+        stbi_image_free(data);
+        texture_op.set_filter<sggl::graphics::opengl::sgOglFilter::Linear>();
+        texture_op.set_wrap<sggl::graphics::opengl::sgOglWrap::MirrorRepeat>();
+        texture_op.gen_mipmap();
+    }
 
 
 
@@ -126,8 +152,9 @@ int main()
 
         program.use();
         decltype(vao)::sgOglOperator vao_op(vao);
+        decltype(texture)::sgOglOperator<sggl::graphics::opengl::sgOglTextureType::Texture2D> texture_op(texture);
 
-        glDrawArrays(GL_TRIANGLES,0,3);
+        glDrawArrays(GL_TRIANGLES,0,6);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
