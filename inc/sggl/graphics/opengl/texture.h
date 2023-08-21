@@ -10,6 +10,7 @@
 #include "sggl/graphics/opengl/color_type.h"
 #include "sggl/graphics/opengl/filter_type.h"
 #include "sggl/graphics/opengl/wrap_type.h"
+#include "sggl/graphics/opengl/framebuffer_type.h"
 
 
 
@@ -36,6 +37,8 @@ namespace sggl
             public:
                 template<sgOglTextureType Type>
                 class sgOglOperator;
+            public:
+                friend class sgOglFramebuffer;
             };
             template<>
             class sgOglTexture::sgOglOperator<sgOglTextureType::Texture2D> : public opengl::sgOglOperator

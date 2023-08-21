@@ -12,7 +12,8 @@
 #include "sggl/graphics/opengl/shader.h"
 #include "sggl/graphics/opengl/program.h"
 #include "sggl/graphics/opengl/texture.h"
-
+#include "sggl/graphics/opengl/framebuffer.h"
+#include "sggl/graphics/opengl/renderbuffer.h"
 
 
 

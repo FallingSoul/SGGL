@@ -18,6 +18,7 @@ namespace sggl
             {
                 RGB,
                 RGBA,
+                D24S8
             };
 
             template<sgOglColorType Type>
@@ -28,6 +29,8 @@ namespace sggl
             struct sgOglColorTarget<sgOglColorType::RGB>{static constexpr sguint target = GL_RGB;};
             template<>
             struct sgOglColorTarget<sgOglColorType::RGBA>{static constexpr sguint target = GL_RGBA;};
+            template<>
+            struct sgOglColorTarget<sgOglColorType::D24S8>{static constexpr sguint target = GL_DEPTH24_STENCIL8;};
 
         }
     }
