@@ -38,7 +38,7 @@ namespace sggl
                         glBindVertexArray(array.identifier());
                     }
                     template<class Type>
-                    sgvoid set_attr(sguint index,sgint count,sgsize stride,sguintptr offset,sgbool normalized = false)
+                    sgvoid set_attr(sguint index,sgint count,sgint stride,sguintptr offset,sgbool normalized = false)
                     {
                         glVertexAttribPointer(index,count,sgOglType<Type>::type,normalized,stride,reinterpret_cast<const sgvoid *>(offset));
                     }

@@ -50,9 +50,9 @@ namespace sggl
                     glGetProgramiv(this->identifier(),GL_LINK_STATUS,&status);
                     return GL_FALSE != status;
                 }
-                sgsize loginfo(sgchar * buffer,sgsize max_len)const
+                sgint loginfo(sgchar * buffer,sgint max_len)const
                 {
-                    sgsize len = 0;
+                    sgint len = 0;
                     glGetProgramInfoLog(this->identifier(),max_len,reinterpret_cast<GLsizei *>(&len),reinterpret_cast<GLchar *>(buffer));
                     return len;
                 }
