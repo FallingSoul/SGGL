@@ -59,26 +59,37 @@ const char * errString = nullptr;
 
 int main()
 {
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE,GLFW_FALSE);
+    // glfwInit();
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
+    // glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
+    // glfwWindowHint(GLFW_RESIZABLE,GLFW_FALSE);
+    sggl::graphics::glfw::sgGlfwInitializer::initialize();
+    sggl::graphics::glfw::sgGlfwInitializer::hint(sggl::graphics::glfw::sgGlfwInitializer::sgGlfwWindowHintEnum::ContextVersionMajor, 3);
+    sggl::graphics::glfw::sgGlfwInitializer::hint(sggl::graphics::glfw::sgGlfwInitializer::sgGlfwWindowHintEnum::ContextVersionMinor, 3);
+    sggl::graphics::glfw::sgGlfwInitializer::hint(sggl::graphics::glfw::sgGlfwInitializer::sgGlfwWindowHintEnum::OpenGLProfile, sggl::graphics::glfw::sgGlfwInitializer::sgGlfwInitializer::sgGlfwOpenglProfile::Core);
+    sggl::graphics::glfw::sgGlfwInitializer::hint(sggl::graphics::glfw::sgGlfwInitializer::sgGlfwWindowHintEnum::Resizable, false);
 #ifdef SG_GL_HOST_APPLE_MAC
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
 #endif
 
-    GLFWwindow * window = glfwCreateWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"Hello OpenGL!",nullptr,nullptr);
-    if(nullptr == window)
     {
-        const char * errString = nullptr;
-        glfwGetError(&errString);
-        printf("cannot create glfw window: %s\n",errString);
-        glfwTerminate();
-        return -1;
-    }
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+    // GLFWwindow * window = glfwCreateWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"Hello OpenGL!",nullptr,nullptr);
+    // if(nullptr == window)
+    // {
+    //     const char * errString = nullptr;
+    //     glfwGetError(&errString);
+    //     printf("cannot create glfw window: %s\n",errString);
+    //     glfwTerminate();
+    //     return -1;
+    // }
+    // glfwMakeContextCurrent(window);
+    // glfwSwapInterval(1);
+
+    sggl::graphics::glfw::sgGlfwWindow window(WINDOW_WIDTH,WINDOW_HEIGHT,"Hello OpenGL!",nullptr,nullptr);
+    window.make_context_current();
+    sggl::graphics::glfw::sgGlfwInitializer::swap_interval(1);
+
     glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
     if(errString = sggl::graphics::opengl::sgOglInitializer::initialize(true))
@@ -153,9 +164,23 @@ int main()
 
 
 
-    glfwShowWindow(window);
-    while(GLFW_FALSE == glfwWindowShouldClose(window))
-    {
+    // glfwShowWindow(window);
+    // while(GLFW_FALSE == glfwWindowShouldClose(window))
+    // {
+    //     glClearColor(0.0,0.0,0.0,1.0);
+    //     glClear(GL_COLOR_BUFFER_BIT);
+
+    //     program.use();
+    //     decltype(vao)::sgOglOperator vao_op(vao);
+    //     decltype(texture)::sgOglOperator<sggl::graphics::opengl::sgOglTextureType::Texture2D> texture_op(texture);
+
+    //     glDrawArrays(GL_TRIANGLES,0,6);
+
+    //     glfwSwapBuffers(window);
+    //     glfwPollEvents();
+    // }
+
+    window.set_on_render([&program, &vao, &texture](sggl::graphics::glfw::sgGlfwWindow *window){
         glClearColor(0.0,0.0,0.0,1.0);
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -164,14 +189,18 @@ int main()
         decltype(texture)::sgOglOperator<sggl::graphics::opengl::sgOglTextureType::Texture2D> texture_op(texture);
 
         glDrawArrays(GL_TRIANGLES,0,6);
+    });
 
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+    window.show();
+
+    window.render_loop();
+
+    //glfwDestroyWindow(window);
+    //此条清理语句再window的析构函数中调用
+    
     }
 
-
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    //glfwTerminate();
+    sggl::graphics::glfw::sgGlfwTerminater::terminate();
     return 0;
 }
