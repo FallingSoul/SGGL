@@ -33,7 +33,7 @@ namespace sggl
                         glDeleteShader(this->identifier());
                     }
                 }
-                sgvoid source(const sgchar * src,sgsize len)
+                sgvoid source(const sgchar * src,sgint len)
                 {
                     if(len)
                     {
@@ -44,11 +44,11 @@ namespace sggl
                         glShaderSource(this->identifier(),1,&src,nullptr);
                     }
                 }
-                sgvoid source(const sgchar * const * src,const sgsize * lengths,sgsize count)
+                sgvoid source(const sgchar * const * src,const sgint * lengths,sgint count)
                 {
                     glShaderSource(this->identifier(),count,src,lengths);
                 }
-                sgvoid read_source(sgchar * buffer,sgsize max_len,sgsize * len)
+                sgvoid read_source(sgchar * buffer,sgint max_len,sgint * len)
                 {
                     glGetShaderSource(this->identifier(),max_len,len,buffer);
                 }
@@ -62,9 +62,9 @@ namespace sggl
                     glGetShaderiv(this->identifier(),GL_COMPILE_STATUS,&status);
                     return GL_FALSE != status;
                 }
-                sgsize loginfo(sgchar * buffer,sgsize max_len)const
+                sgint loginfo(sgchar * buffer,sgint max_len)const
                 {
-                    sgsize len = 0;
+                    sgint len = 0;
                     glGetShaderInfoLog(this->identifier(),max_len,reinterpret_cast<GLsizei *>(&len),reinterpret_cast<GLchar *>(buffer));
                     return len;
                 }

@@ -45,12 +45,12 @@ namespace sggl
                         glBindBufferBase(_target,index,ubo.identifier());
                     }
                     template<sgOglUsage Usage>
-                    sgvoid buffer_data(const sgvoid * data,sgsize size)
+                    sgvoid buffer_data(const sgvoid * data,sgint size)
                     {
                         glBufferData(_target,size,data,sgOglUsageType<Usage>::type);
                     }
                     template<sgOglUsage Usage>
-                    sgvoid buffer_data(const sgvoid * data,sgsize size,sguintptr offset)
+                    sgvoid buffer_data(const sgvoid * data,sgint size,sguintptr offset)
                     {
                         glBufferSubData(_target,offset,size,data);
                     }
@@ -60,11 +60,11 @@ namespace sggl
                         return glMapBuffer(_target,sgOglAccessType<Access>::type);
                     }
                     template<sgOglAccess Access>
-                    sgvoid * map(sguintptr offset,sgsize size)
+                    sgvoid * map(sguintptr offset,sgint size)
                     {
                         return glMapBufferRange(_target,offset,size,sgOglAccessType<Access>::type);
                     }
-                    sgvoid read_data(sgvoid * data,sgsize size,sguintptr offset)
+                    sgvoid read_data(sgvoid * data,sgint size,sguintptr offset)
                     {
                         glGetBufferSubData(_target,offset,size,data);
                     }
